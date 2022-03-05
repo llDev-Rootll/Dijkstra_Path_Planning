@@ -21,19 +21,49 @@ def animate(i, l_vis):
 
 if __name__ == "__main__":
     src_x, src_y, dst_x, dst_y = 0, 0, 0, 0
-    while(True):
-        src_x = random.randint(0,int((x_max-1)/2))
-        src_y = random.randint(0, y_max)
-        dst_x = random.randint(int((x_max-1)/2), x_max)
-        dst_y = random.randint(0, y_max)
+    
+    
+    while True:
+        print("Enter choice : ")
+        print("(1) Enter points manually ")
+        print("(2) Randomize source and destination")
+        choice = input()
+        if choice == '2':
+            while(True):
+                src_x = random.randint(0,int((x_max-1)/2))
+                src_y = random.randint(0, y_max)
+                dst_x = random.randint(int((x_max-1)/2), x_max)
+                dst_y = random.randint(0, y_max)
 
-        if(check_obstacle([src_x, src_y]) and check_obstacle([dst_x, dst_y])):
+                if(check_obstacle([src_x, src_y]) and check_obstacle([dst_x, dst_y])):
+                    break
             break
+                
+        elif choice == '1':
+            while(True):
+                print("Enter source points as X,Y :")
+                src = input()
+                src_x = int(src.split(",")[0])
+                src_y = int(src.split(",")[1])
+                print("Enter destination points as X,Y :")
+                dst = input()
+                dst_x = int(dst.split(",")[0])
+                dst_y = int(dst.split(",")[1])
+
+                if(check_obstacle([src_x, src_y]) and check_obstacle([dst_x, dst_y])):
+                    break
+                else:
+                    print("Please enter points which are not in obstacle space :")
+                    continue
+            break
+        else:
+            print("Invalid choice, please try again.")
+            continue
 
     src = (src_x, src_y)
     dst = (dst_x, dst_y)
-    src = (0, 0)
-    dst = (114, 100)
+    # src = (0, 0)
+    # dst = (114, 100)
     print("Source Point is : ", src)
     print("Destination Point is : ", dst)
 
