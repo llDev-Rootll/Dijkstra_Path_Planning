@@ -73,7 +73,7 @@ if __name__ == "__main__":
     circle = plt.Circle(centre, radius, color='b', fill=True)
     ax.add_patch(circle_i)
     ax.add_patch(circle)
-
+    # plt.show()
     animator = FuncAnimation(fig, animate, frames = (len(visited)+len(path)) ,fargs=[len(visited)], interval = 1, repeat=False, blit=True)
     print("Save simulation to disk? (rendering takes a while)")
     print("Press y or n : ")

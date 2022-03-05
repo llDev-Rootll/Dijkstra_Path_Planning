@@ -24,10 +24,10 @@ p1 = [36, 185]
 p2 = [115, 210]
 p3 = [80, 180]
 p4 = [105, 100]
-p1_i = [31, 185]
-p2_i = [120+5/math.cos(math.pi/5), 210+5/math.sin(math.pi/5)]
+p1_i = [36 - 5*math.cos(sixty)-3, 185 + 5*math.cos(sixty)]
+p2_i = [120+5/math.cos(40*math.pi/180), 210+5/math.sin(40*math.pi/180)-1]
 p3_i = [85, 180]
-p4_i = [105+5/math.cos(math.pi/5), 100-5/math.sin(math.pi/5)]
+p4_i = [105+5/math.cos(math.pi/5)-2, 100-5/math.sin(math.pi/5)-1]
 
 
 centre = [300, 185]
