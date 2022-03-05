@@ -10,13 +10,13 @@ from dimensions import *
 def init():
     scat.set_offsets([])
     return scat,
-def animate(i, l_vis, l_path):
+def animate(i, l_vis):
     if(i<=l_vis):
         line.set_data(path_x[0], path_y[0])
         data = np.hstack((visited_x[:i,np.newaxis], visited_y[:i, np.newaxis]))
         scat.set_offsets(data)
     else:
-        line.set_data(path_x[:(i-l_vis)*15], path_y[:(i-l_vis)*15])
+        line.set_data(path_x[:(i-l_vis)*30], path_y[:(i-l_vis)*30])
     return scat, line,
 
 if __name__ == "__main__":
@@ -32,7 +32,8 @@ if __name__ == "__main__":
 
     src = (src_x, src_y)
     dst = (dst_x, dst_y)
-
+    src = (0, 0)
+    dst = (114, 100)
     print("Source Point is : ", src)
     print("Destination Point is : ", dst)
 
@@ -73,6 +74,13 @@ if __name__ == "__main__":
     ax.add_patch(circle_i)
     ax.add_patch(circle)
 
-    animator = FuncAnimation(fig, animate, frames = (len(visited)+len(path)) ,fargs=[len(visited), len(path)], interval = 1, repeat=False)
-    animator.save('animation.mp4')
+    animator = FuncAnimation(fig, animate, frames = (len(visited)+len(path)) ,fargs=[len(visited)], interval = 1, repeat=False, blit=True)
+    print("Save simulation to disk? (rendering takes a while)")
+    print("Press y or n : ")
+    save = input()
+    if save == 'y' or save =='Y':
+        print("Rendering frames to disk...This may take a while...")
+        animator.save('animation.mp4')
     plt.show()
+    
+    
